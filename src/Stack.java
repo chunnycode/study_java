@@ -68,7 +68,7 @@ public class Stack<E> {
     }
 
     public E push(E elem){
-        if(isEmpty()){
+        if(isFull()){
             resize();
         }
         stack[size] = elem;
