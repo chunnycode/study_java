@@ -6,18 +6,24 @@ import java.util.EmptyStackException;
 * Int 배열의 스택을 구현하였다
 * 기본적인 스택 구현 연습
 * */
-public class BasicIntStack {
+public class BasicIntStack implements Cloneable{
 
     private int max;
     private int top;
     private int[] stack;
+
+
+    public BasicIntStack(){
+        top = 0;
+        max = 10;
+        stack = new int[max];
+    }
 
     public BasicIntStack(int capacity){
         top = 0;
         max = capacity;
         stack = new int[max];
     }
-
 
     public boolean isEmpty(){
         return top <= 0;
@@ -79,4 +85,12 @@ public class BasicIntStack {
         }
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        BasicIntStack clone = new BasicIntStack(max);
+        for(int i:stack){
+            clone.push(i);
+        }
+        return clone;
+    }
 }
