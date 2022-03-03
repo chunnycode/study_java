@@ -1,12 +1,18 @@
-import com.sun.source.tree.ClassTree;
+package Stack;
 
-public class IntStack {
+import java.util.EmptyStackException;
+
+/*
+* Int 배열의 스택을 구현하였다
+* 기본적인 스택 구현 연습
+* */
+public class BasicIntStack {
 
     private int max;
     private int top;
     private int[] stack;
 
-    public IntStack(int capacity){
+    public BasicIntStack(int capacity){
         top = 0;
         max = capacity;
         stack = new int[max];
@@ -21,23 +27,23 @@ public class IntStack {
         return top >= max;
     }
 
-    public int push(int x) throws OverflowIntStackException{
+    public int push(int x){
         if(isFull()){
-            throw new OverflowIntStackException();
+            throw new StackOverflowError();
         }
         return stack[top++] = x;
     }
 
-    public int pop() throws EmptyIntStackException{
+    public int pop(){
         if(isEmpty()) {
-            throw new EmptyIntStackException();
+            throw new EmptyStackException();
         }
         return stack[--top];
     }
 
     public int peek(){
         if(isEmpty()){
-            throw new EmptyIntStackException();
+            throw new EmptyStackException();
         }
         return stack[top - 1];
     }
@@ -71,15 +77,6 @@ public class IntStack {
                 System.out.println(stack[i]);
             }
         }
-    }
-
-
-    public class EmptyIntStackException extends RuntimeException {
-        public EmptyIntStackException (){ }
-    }
-
-    public class OverflowIntStackException extends RuntimeException {
-        public OverflowIntStackException(){ }
     }
 
 }

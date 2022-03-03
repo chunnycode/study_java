@@ -1,3 +1,5 @@
+package Stack;
+
 public class Salt {
 
     private int value;

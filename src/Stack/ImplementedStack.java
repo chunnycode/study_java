@@ -1,6 +1,13 @@
+package Stack;
+
+import Stack.Interface.StackInterface;
+
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+/*
+* StackInterface 를 구현하였다
+* */
 public class ImplementedStack<T> implements StackInterface<T> { // Cloneable, Serializable
 
 	private static final int DEFAULT_CAPACITY = 10;

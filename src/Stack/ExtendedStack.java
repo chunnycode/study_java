@@ -1,5 +1,4 @@
-import java.io.Serializable;
-import java.util.Arrays;
+package Stack;
 
 public class ExtendedStack<T> extends ImplementedStack<T> implements Cloneable {
 

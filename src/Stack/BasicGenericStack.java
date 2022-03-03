@@ -1,29 +1,35 @@
-import com.sun.source.tree.ClassTree;
+package Stack;
 
-public class GeneratorStack<E> {
+import java.util.EmptyStackException;
+
+/*
+* Int 스택에서 발전시켜
+* Generic 을 사용하여 배열로 스택을 구현하였다
+* */
+public class BasicGenericStack<E> {
 
     private static final int DEFAULT_SIZE = 16;
     private int top = 0;
     private E[] stack;
 
-    public GeneratorStack(){
+    public BasicGenericStack(){
         stack = (E[]) new Object[DEFAULT_SIZE];
     }
 
-    public GeneratorStack(int capacity){
+    public BasicGenericStack(int capacity){
         stack = (E[]) new Object[capacity];
     }
 
-    public E push(E x) throws OverflowMyStackException{
+    public E push(E x) {
         if(isFull()){
-            throw new OverflowMyStackException();
+            throw new StackOverflowError();
         }
         return stack[top++] = x;
     }
 
-    public E pop() throws EmptyMyStackException{
+    public E pop() {
         if(isEmpty()) {
-            throw new EmptyMyStackException();
+            throw new EmptyStackException();
         }
         E res = stack[--top];
         stack[top] = null;
@@ -32,7 +38,7 @@ public class GeneratorStack<E> {
 
     public E peek(){
         if(isEmpty()){
-            throw new EmptyMyStackException();
+            throw new EmptyStackException();
         }
         return stack[top - 1];
     }
@@ -77,14 +83,6 @@ public class GeneratorStack<E> {
 
     public boolean isFull(){
         return top >= stack.length;
-    }
-
-    public static class EmptyMyStackException extends RuntimeException {
-        public EmptyMyStackException (){ }
-    }
-
-    public static class OverflowMyStackException extends RuntimeException {
-        public OverflowMyStackException(){ }
     }
 
 }

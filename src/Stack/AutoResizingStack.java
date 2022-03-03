@@ -1,9 +1,14 @@
-import com.sun.source.tree.ClassTree;
+package Stack;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
-public class Stack<E> {
+
+/*
+* 자동으로 사이즈를 조절하는 스택을 구현
+* Generic 스택에서 발전
+* */
+public class AutoResizingStack<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private static final Object[] EMPTY_STACK = {};
@@ -11,12 +16,12 @@ public class Stack<E> {
     private Object[] stack;
     private int size; // 배열에 담긴 수
 
-    public Stack() {
+    public AutoResizingStack() {
         this.stack = EMPTY_STACK;
         this.size = 0;
     }
 
-    public Stack(int capacity){
+    public AutoResizingStack(int capacity){
         this.stack = new Object[capacity];
         this.size = 0;
     }

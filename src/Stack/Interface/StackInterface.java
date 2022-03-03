@@ -1,3 +1,5 @@
+package Stack.Interface;
+
 /*
 * Stack Interface
 *
