@@ -1,16 +1,34 @@
 package Clone;
 
+import Stack.BasicGenericStack;
 import Stack.BasicIntStack;
 
 public class CloneTest {
 
 	public static void main(String[] args){
 		CloneTest test = new CloneTest();
-		test.BasicIntStackTest();
-
-
+		test.BasicGenericStackTest();
 	}
 
+	public void BasicGenericStackTest(){
+		BasicGenericStack<String> tmp = new BasicGenericStack<String>();
+		tmp.push("test1");
+		tmp.push("test12");
+		tmp.push("test13");
+		tmp.push("test15");
+		BasicGenericStack<String> tmp2 = null;
+		try {
+			tmp2 = (BasicGenericStack<String>) tmp.clone();
+		} catch( Exception e ) {
+
+		}
+		tmp.push("20");
+		tmp2.push("there");
+
+		System.out.println(tmp);
+		System.out.println(tmp2);
+		// Generic 배열로 만든 BasicGenericStack Cloneable Override 구현. 잘 동작함.
+	}
 
 	public void BasicIntStackTest(){
 		BasicIntStack tmp = new BasicIntStack();

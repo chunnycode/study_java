@@ -6,44 +6,44 @@ import java.util.EmptyStackException;
 * Int 스택에서 발전시켜
 * Generic 을 사용하여 배열로 스택을 구현하였다
 * */
-public class BasicGenericStack<E> {
+public class BasicGenericStack<T> implements Cloneable{
 
     private static final int DEFAULT_SIZE = 16;
     private int top = 0;
-    private E[] stack;
+    private T[] stack;
 
     public BasicGenericStack(){
-        stack = (E[]) new Object[DEFAULT_SIZE];
+        stack = (T[]) new Object[DEFAULT_SIZE];
     }
 
     public BasicGenericStack(int capacity){
-        stack = (E[]) new Object[capacity];
+        stack = (T[]) new Object[capacity];
     }
 
-    public E push(E x) {
+    public T push(T x) {
         if(isFull()){
             throw new StackOverflowError();
         }
         return stack[top++] = x;
     }
 
-    public E pop() {
+    public T pop() {
         if(isEmpty()) {
             throw new EmptyStackException();
         }
-        E res = stack[--top];
+        T res = stack[--top];
         stack[top] = null;
         return res;
     }
 
-    public E peek(){
+    public T peek(){
         if(isEmpty()){
             throw new EmptyStackException();
         }
         return stack[top - 1];
     }
 
-    public int indexOf(E x){
+    public int indexOf(T x){
         for(int i = top-1; i>=0; i--){
             if(stack[i].equals(x)){
                 return i;
@@ -85,4 +85,12 @@ public class BasicGenericStack<E> {
         return top >= stack.length;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        BasicGenericStack<T> clone = new BasicGenericStack<T>();
+        for(int i=0; i<top; i++){
+            clone.push(stack[i]);
+        }
+        return clone;
+    }
 }
