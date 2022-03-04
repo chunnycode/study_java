@@ -1,5 +1,6 @@
 package Clone;
 
+import Stack.AutoResizingStack;
 import Stack.BasicGenericStack;
 import Stack.BasicIntStack;
 
@@ -7,18 +8,18 @@ public class CloneTest {
 
 	public static void main(String[] args){
 		CloneTest test = new CloneTest();
-		test.BasicGenericStackTest();
+		test.AutoResizingStackTest();
 	}
 
-	public void BasicGenericStackTest(){
-		BasicGenericStack<String> tmp = new BasicGenericStack<String>();
+	public void AutoResizingStackTest(){
+		AutoResizingStack<String> tmp = new AutoResizingStack<String>();
 		tmp.push("test1");
 		tmp.push("test12");
 		tmp.push("test13");
 		tmp.push("test15");
-		BasicGenericStack<String> tmp2 = null;
+		AutoResizingStack<String> tmp2 = null;
 		try {
-			tmp2 = (BasicGenericStack<String>) tmp.clone();
+			tmp2 = (AutoResizingStack<String>) tmp.clone();
 		} catch( Exception e ) {
 
 		}
@@ -27,7 +28,7 @@ public class CloneTest {
 
 		System.out.println(tmp);
 		System.out.println(tmp2);
-		// Generic 배열로 만든 BasicGenericStack Cloneable Override 구현. 잘 동작함.
+		// 잘 동작함.
 	}
 
 	public void BasicIntStackTest(){

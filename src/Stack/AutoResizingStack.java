@@ -8,29 +8,26 @@ import java.util.EmptyStackException;
 * 자동으로 사이즈를 조절하는 스택을 구현
 * Generic 스택에서 발전
 * */
-public class AutoResizingStack<E> {
+public class AutoResizingStack<T> implements Cloneable{
 
     private static final int DEFAULT_CAPACITY = 10;
-    private static final Object[] EMPTY_STACK = {};
 
-    private Object[] stack;
-    private int size; // 배열에 담긴 수
+    private T[] stack;
+    private int size = 0; // 배열에 담긴 수
 
     public AutoResizingStack() {
-        this.stack = EMPTY_STACK;
-        this.size = 0;
+        this.stack = (T[]) new Object[DEFAULT_CAPACITY];
     }
 
     public AutoResizingStack(int capacity){
-        this.stack = new Object[capacity];
-        this.size = 0;
+        this.stack = (T[]) new Object[capacity];
     }
 
 
     private void resize(){
         // 빈 배열일때 default 크기로 설정
-        if(Arrays.equals(stack, EMPTY_STACK)){
-            stack = new Object[DEFAULT_CAPACITY];
+        if(size == 0){
+            stack = (T[]) new Object[DEFAULT_CAPACITY];
             return;
         }
 
@@ -72,7 +69,7 @@ public class AutoResizingStack<E> {
         return size;
     }
 
-    public E push(E elem){
+    public T push(T elem){
         if(isFull()){
             resize();
         }
@@ -81,23 +78,29 @@ public class AutoResizingStack<E> {
         return elem;
     }
 
-    public E pop() {
+    public T pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
 
-        E obj = (E) stack[--size];
+        T obj = (T) stack[--size];
         stack[size] = null;
         resize();
         return obj;
     }
 
-    public E peek() {
+    public T peek() {
         if(isEmpty()) {
             throw new EmptyStackException();
         }
-        return (E) stack[size - 1];
+        return (T) stack[size - 1];
     }
 
-
+    public Object clone() throws CloneNotSupportedException {
+        AutoResizingStack<T> clone = new AutoResizingStack<T>();
+        for(int i=0; i<this.size; i++){
+            clone.push(stack[i]);
+        }
+        return clone;
+    }
 }
