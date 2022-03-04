@@ -11,6 +11,7 @@ public class CloneTest {
 
 	}
 
+
 	public void BasicIntStackTest(){
 		BasicIntStack tmp = new BasicIntStack();
 		tmp.push(1);
@@ -20,16 +21,15 @@ public class CloneTest {
 		BasicIntStack tmp2 = null;
 		try {
 			tmp2 = (BasicIntStack) tmp.clone();
-			tmp2.push(3);
 		} catch( Exception e ) {
 
 		}
 		tmp.push(2);
-//		tmp2.push(3);
+		tmp2.push(3);
 
 		System.out.println(tmp);
 		System.out.println(tmp2);
-		// String 배열도 잘 동작함.
+		// int 배열로 만든 BasicIntStack Cloneable Override 구현. 잘 동작함.
 	}
 
 

@@ -88,8 +88,8 @@ public class BasicIntStack implements Cloneable{
     @Override
     public Object clone() throws CloneNotSupportedException {
         BasicIntStack clone = new BasicIntStack(max);
-        for(int i:stack){
-            clone.push(i);
+        for(int i=0; i<top; i++){
+            clone.push(stack[i]);
         }
         return clone;
     }
