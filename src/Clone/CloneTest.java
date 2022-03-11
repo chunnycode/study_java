@@ -3,12 +3,36 @@ package Clone;
 import Stack.AutoResizingStack;
 import Stack.BasicGenericStack;
 import Stack.BasicIntStack;
-
+import Stack.ImplementedStack;
+/*
+* Cloneable을 구현한 자료구조를 테스트하는 파일
+* Cloneable의 구현은 각 자료형에 구현하였음
+* */
 public class CloneTest {
 
 	public static void main(String[] args){
 		CloneTest test = new CloneTest();
-		test.AutoResizingStackTest();
+		test.ImplementedStackTest();
+	}
+
+	public void ImplementedStackTest(){
+		ImplementedStack<String> tmp = new ImplementedStack<>();
+
+		tmp.push("good");
+		tmp.push("morning");
+
+		ImplementedStack<String> tmp2 = null;
+		try {
+			tmp2 = (AutoResizingStack<String>) tmp.clone();
+		} catch( Exception e ) {
+
+		}
+		tmp.push("20");
+		tmp2.push("there");
+
+		System.out.println(tmp);
+		System.out.println(tmp2);
+		// 잘 동작함
 	}
 
 	public void AutoResizingStackTest(){
