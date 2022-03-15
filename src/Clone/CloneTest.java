@@ -23,7 +23,7 @@ public class CloneTest {
 
 		ImplementedStack<String> tmp2 = null;
 		try {
-			tmp2 = (AutoResizingStack<String>) tmp.clone();
+//			tmp2 = (AutoResizingStack<String>) tmp.clone();
 		} catch( Exception e ) {
 
 		}
